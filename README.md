@@ -20,7 +20,8 @@ Windowsフォームアプリケーション(.NET Framework)
  
 ## Usage
 ### アプリを使いたい方
-Releaseフォルダをダウンロードしてご利用下さい。
+Releaseフォルダをダウンロードして下さい。<br>
+**GrepTool.exe** を実行しご利用下さい。
 ### 開発する方
 binフォルダとsourceフォルダをダウンロードして下さい。
  
