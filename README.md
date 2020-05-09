@@ -5,8 +5,10 @@
  -  .NET Framework 4.7.2
  
 ## Usage
- - アプリを使いたい方<br>Releaseフォルダをダウンロードしてご利用ください。
- - 開発する方<br>binフォルダとsourceフォルダをダウンロードして下さい。
+### アプリを使いたい方
+Releaseフォルダをダウンロードしてご利用ください。
+### 開発する方
+binフォルダとsourceフォルダをダウンロードして下さい。
  
 ## References
  - https://memo-c-sharp.blogspot.com/2015/09/datagridview.html
