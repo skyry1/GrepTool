@@ -3,6 +3,7 @@
 
 ## Dependency
  -  .NET Framework 4.7.2
+ -  VisualStudio2019
  
 ## Usage
 ### アプリを使いたい方
