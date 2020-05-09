@@ -4,8 +4,15 @@
 検索結果をExcelファイルで出力することが出来ます。
 
 ## Dependency
- -  .NET Framework 4.7.2
- -  VisualStudio2019
+### IDE
+Visual Studio 2019
+### フレームワーク
+.NET Framework 4.7.2
+### 参照設定
+ - DataGridViewAutoFilter.dll
+ - Microsoft.Office.Interop.Excel.dll
+ - Microsoft.Vbe.Interop.dll
+ - office.dll
  
 ## Usage
 ### アプリを使いたい方
