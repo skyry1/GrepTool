@@ -6,9 +6,13 @@
 ## Dependency
 ### IDE
 Visual Studio 2019
+### 言語
+Visual Basic .NET
+### プロジェクト
+Windowsフォームアプリケーション(.NET Framework)
 ### フレームワーク
 .NET Framework 4.7.2
-### 参照設定
+### 追加参照設定
  - DataGridViewAutoFilter.dll
  - Microsoft.Office.Interop.Excel.dll
  - Microsoft.Vbe.Interop.dll
