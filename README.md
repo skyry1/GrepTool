@@ -11,6 +11,8 @@ Visual Basic .NET
 Windowsフォームアプリケーション(.NET Framework)
 ### フレームワーク
 .NET Framework 4.7.2
+### ミドルウェア
+Microsoft Excel
 ### 追加参照設定
  - DataGridViewAutoFilter.dll
  - Microsoft.Office.Interop.Excel.dll
