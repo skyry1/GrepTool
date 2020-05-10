@@ -1,15 +1,27 @@
 # GrepTool
-自作ファイル検索アプリ兼VB.NET開発練習
-指定したフォルダ内にあるファイルに対し、指定したキーワードでファイルの内容に対し検索を行います。
+自作ファイル検索アプリ兼VB.NET開発練習<br>
+指定したフォルダ内にあるファイルに対し、指定したキーワードでファイルの内容に対し検索を行います。<br>
 検索結果をExcelファイルで出力することが出来ます。
 
 ## Dependency
- -  .NET Framework 4.7.2
- -  VisualStudio2019
+### IDE
+Visual Studio 2019
+### 言語
+Visual Basic .NET
+### プロジェクト
+Windowsフォームアプリケーション(.NET Framework)
+### フレームワーク
+.NET Framework 4.7.2
+### 追加参照設定
+ - DataGridViewAutoFilter.dll
+ - Microsoft.Office.Interop.Excel.dll
+ - Microsoft.Vbe.Interop.dll
+ - office.dll
  
 ## Usage
 ### アプリを使いたい方
-Releaseフォルダをダウンロードしてご利用ください。
+Releaseフォルダをダウンロードして下さい。<br>
+**GrepTool.exe** を実行しご利用下さい。
 ### 開発する方
 binフォルダとsourceフォルダをダウンロードして下さい。
  
