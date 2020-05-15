@@ -254,4 +254,15 @@ Public Class GrepTool
         Dim form As New GrepToolSetting()
         form.Show()
     End Sub
+
+    Private Sub フォントToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles フォントToolStripMenuItem.Click
+
+        Dim fd As New FontDialog With {
+            .Font = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).DefaultCellStyle.Font
+        }
+
+        If fd.ShowDialog <> DialogResult.Cancel Then
+            DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).DefaultCellStyle.Font = fd.Font
+        End If
+    End Sub
 End Class

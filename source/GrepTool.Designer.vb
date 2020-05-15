@@ -44,11 +44,12 @@ Partial Class GrepTool
         Me.全タブを保存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.サクラエディタのパスを設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.履歴管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.セルをコピーするToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.フルパスをコピーするToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.エクスプローラーで開くToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.履歴管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.フォントToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -237,7 +238,6 @@ Partial Class GrepTool
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ファイルToolStripMenuItem, Me.設定ToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(6, 2, 0, 2)
         Me.MenuStrip1.Size = New System.Drawing.Size(1736, 38)
         Me.MenuStrip1.TabIndex = 13
         Me.MenuStrip1.Text = "MenuStrip1"
@@ -271,7 +271,7 @@ Partial Class GrepTool
         '
         '設定ToolStripMenuItem
         '
-        Me.設定ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.サクラエディタのパスを設定ToolStripMenuItem, Me.履歴管理ToolStripMenuItem})
+        Me.設定ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.サクラエディタのパスを設定ToolStripMenuItem, Me.履歴管理ToolStripMenuItem, Me.フォントToolStripMenuItem})
         Me.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem"
         Me.設定ToolStripMenuItem.Size = New System.Drawing.Size(73, 34)
         Me.設定ToolStripMenuItem.Text = "設定"
@@ -281,6 +281,12 @@ Partial Class GrepTool
         Me.サクラエディタのパスを設定ToolStripMenuItem.Name = "サクラエディタのパスを設定ToolStripMenuItem"
         Me.サクラエディタのパスを設定ToolStripMenuItem.Size = New System.Drawing.Size(347, 40)
         Me.サクラエディタのパスを設定ToolStripMenuItem.Text = "サクラエディタのパスを設定"
+        '
+        '履歴管理ToolStripMenuItem
+        '
+        Me.履歴管理ToolStripMenuItem.Name = "履歴管理ToolStripMenuItem"
+        Me.履歴管理ToolStripMenuItem.Size = New System.Drawing.Size(347, 40)
+        Me.履歴管理ToolStripMenuItem.Text = "履歴管理"
         '
         'ContextMenuStrip1
         '
@@ -307,11 +313,11 @@ Partial Class GrepTool
         Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
         Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
         '
-        '履歴管理ToolStripMenuItem
+        'フォントToolStripMenuItem
         '
-        Me.履歴管理ToolStripMenuItem.Name = "履歴管理ToolStripMenuItem"
-        Me.履歴管理ToolStripMenuItem.Size = New System.Drawing.Size(347, 40)
-        Me.履歴管理ToolStripMenuItem.Text = "履歴管理"
+        Me.フォントToolStripMenuItem.Name = "フォントToolStripMenuItem"
+        Me.フォントToolStripMenuItem.Size = New System.Drawing.Size(347, 40)
+        Me.フォントToolStripMenuItem.Text = "フォント"
         '
         'GrepTool
         '
@@ -363,4 +369,5 @@ Partial Class GrepTool
     Friend WithEvents 設定ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents サクラエディタのパスを設定ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 履歴管理ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents フォントToolStripMenuItem As ToolStripMenuItem
 End Class
