@@ -45,11 +45,13 @@ Partial Class GrepTool
         Me.設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.サクラエディタのパスを設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.履歴管理ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.フォントToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.セルをコピーするToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.フルパスをコピーするToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.エクスプローラーで開くToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.フォントToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.列を非表示にするToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.列を再表示するToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -288,36 +290,48 @@ Partial Class GrepTool
         Me.履歴管理ToolStripMenuItem.Size = New System.Drawing.Size(347, 40)
         Me.履歴管理ToolStripMenuItem.Text = "履歴管理"
         '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(28, 28)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.セルをコピーするToolStripMenuItem, Me.フルパスをコピーするToolStripMenuItem, Me.エクスプローラーで開くToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(260, 112)
-        '
-        'セルをコピーするToolStripMenuItem
-        '
-        Me.セルをコピーするToolStripMenuItem.Name = "セルをコピーするToolStripMenuItem"
-        Me.セルをコピーするToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
-        Me.セルをコピーするToolStripMenuItem.Text = "セルをコピーする"
-        '
-        'フルパスをコピーするToolStripMenuItem
-        '
-        Me.フルパスをコピーするToolStripMenuItem.Name = "フルパスをコピーするToolStripMenuItem"
-        Me.フルパスをコピーするToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
-        Me.フルパスをコピーするToolStripMenuItem.Text = "フルパスをコピーする"
-        '
-        'エクスプローラーで開くToolStripMenuItem
-        '
-        Me.エクスプローラーで開くToolStripMenuItem.Name = "エクスプローラーで開くToolStripMenuItem"
-        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
-        Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
-        '
         'フォントToolStripMenuItem
         '
         Me.フォントToolStripMenuItem.Name = "フォントToolStripMenuItem"
         Me.フォントToolStripMenuItem.Size = New System.Drawing.Size(347, 40)
         Me.フォントToolStripMenuItem.Text = "フォント"
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(28, 28)
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.セルをコピーするToolStripMenuItem, Me.フルパスをコピーするToolStripMenuItem, Me.エクスプローラーで開くToolStripMenuItem, Me.列を非表示にするToolStripMenuItem, Me.列を再表示するToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(271, 222)
+        '
+        'セルをコピーするToolStripMenuItem
+        '
+        Me.セルをコピーするToolStripMenuItem.Name = "セルをコピーするToolStripMenuItem"
+        Me.セルをコピーするToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.セルをコピーするToolStripMenuItem.Text = "セルをコピーする"
+        '
+        'フルパスをコピーするToolStripMenuItem
+        '
+        Me.フルパスをコピーするToolStripMenuItem.Name = "フルパスをコピーするToolStripMenuItem"
+        Me.フルパスをコピーするToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.フルパスをコピーするToolStripMenuItem.Text = "フルパスをコピーする"
+        '
+        'エクスプローラーで開くToolStripMenuItem
+        '
+        Me.エクスプローラーで開くToolStripMenuItem.Name = "エクスプローラーで開くToolStripMenuItem"
+        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
+        '
+        '列を非表示にするToolStripMenuItem
+        '
+        Me.列を非表示にするToolStripMenuItem.Name = "列を非表示にするToolStripMenuItem"
+        Me.列を非表示にするToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.列を非表示にするToolStripMenuItem.Text = "列を非表示にする"
+        '
+        '列を再表示するToolStripMenuItem
+        '
+        Me.列を再表示するToolStripMenuItem.Name = "列を再表示するToolStripMenuItem"
+        Me.列を再表示するToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.列を再表示するToolStripMenuItem.Text = "列を再表示する"
         '
         'GrepTool
         '
@@ -370,4 +384,6 @@ Partial Class GrepTool
     Friend WithEvents サクラエディタのパスを設定ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 履歴管理ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents フォントToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 列を非表示にするToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 列を再表示するToolStripMenuItem As ToolStripMenuItem
 End Class

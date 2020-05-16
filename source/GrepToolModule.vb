@@ -15,7 +15,8 @@ Module GrepToolModule
             .AllowUserToAddRows = False,
             .[ReadOnly] = True,
             .AllowUserToResizeRows = False,
-            .ContextMenuStrip = contextMenuStrip
+            .ContextMenuStrip = contextMenuStrip,
+            .Font = My.Settings.Font
         }
 
         'テーブル作成

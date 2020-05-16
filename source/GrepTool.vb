@@ -257,12 +257,35 @@ Public Class GrepTool
 
     Private Sub フォントToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles フォントToolStripMenuItem.Click
 
-        Dim fd As New FontDialog With {
-            .Font = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).DefaultCellStyle.Font
-        }
+        Dim fd As New FontDialog
+        Try
+            fd.Font = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).DefaultCellStyle.Font
+        Catch ex As Exception
+            fd.Font = My.Settings.Font
+        End Try
 
         If fd.ShowDialog <> DialogResult.Cancel Then
-            DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).DefaultCellStyle.Font = fd.Font
+            My.Settings.Font = fd.Font
+            My.Settings.Save()
         End If
+
+        Try
+            DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).DefaultCellStyle.Font = My.Settings.Font
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub 列を非表示にするToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列を非表示にするToolStripMenuItem.Click
+        Dim dgv As GrepToolDataGridView = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView)
+        Dim currentColumn As Integer = dgv.CurrentCell.ColumnIndex
+        DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).Columns(currentColumn).Visible = False
+    End Sub
+
+    Private Sub 列を再表示するToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 列を再表示するToolStripMenuItem.Click
+        Dim dgv As GrepToolDataGridView = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView)
+        For i As Integer = 0 To dgv.Columns.Count - 1
+            DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).Columns(i).Visible = True
+        Next i
     End Sub
 End Class
