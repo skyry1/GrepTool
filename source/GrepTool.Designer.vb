@@ -39,7 +39,6 @@ Partial Class GrepTool
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ファイルToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Save_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteTab_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.全タブを保存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,6 +51,7 @@ Partial Class GrepTool
         Me.エクスプローラーで開くToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.列を非表示にするToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.列を再表示するToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.現在のタブを保存ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -246,29 +246,22 @@ Partial Class GrepTool
         '
         'ファイルToolStripMenuItem
         '
-        Me.ファイルToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Save_ToolStripMenuItem, Me.DeleteTab_ToolStripMenuItem, Me.全タブを保存ToolStripMenuItem})
+        Me.ファイルToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteTab_ToolStripMenuItem, Me.全タブを保存ToolStripMenuItem, Me.現在のタブを保存ToolStripMenuItem})
         Me.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem"
         Me.ファイルToolStripMenuItem.Size = New System.Drawing.Size(112, 34)
         Me.ファイルToolStripMenuItem.Text = "ファイル(F)"
-        '
-        'Save_ToolStripMenuItem
-        '
-        Me.Save_ToolStripMenuItem.Name = "Save_ToolStripMenuItem"
-        Me.Save_ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.Save_ToolStripMenuItem.Size = New System.Drawing.Size(354, 40)
-        Me.Save_ToolStripMenuItem.Text = "名前を付けて保存"
         '
         'DeleteTab_ToolStripMenuItem
         '
         Me.DeleteTab_ToolStripMenuItem.Name = "DeleteTab_ToolStripMenuItem"
         Me.DeleteTab_ToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
-        Me.DeleteTab_ToolStripMenuItem.Size = New System.Drawing.Size(354, 40)
+        Me.DeleteTab_ToolStripMenuItem.Size = New System.Drawing.Size(331, 40)
         Me.DeleteTab_ToolStripMenuItem.Text = "このタブを削除"
         '
         '全タブを保存ToolStripMenuItem
         '
         Me.全タブを保存ToolStripMenuItem.Name = "全タブを保存ToolStripMenuItem"
-        Me.全タブを保存ToolStripMenuItem.Size = New System.Drawing.Size(354, 40)
+        Me.全タブを保存ToolStripMenuItem.Size = New System.Drawing.Size(331, 40)
         Me.全タブを保存ToolStripMenuItem.Text = "全タブを保存"
         '
         '設定ToolStripMenuItem
@@ -301,37 +294,43 @@ Partial Class GrepTool
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(28, 28)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.セルをコピーするToolStripMenuItem, Me.フルパスをコピーするToolStripMenuItem, Me.エクスプローラーで開くToolStripMenuItem, Me.列を非表示にするToolStripMenuItem, Me.列を再表示するToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(271, 222)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(260, 184)
         '
         'セルをコピーするToolStripMenuItem
         '
         Me.セルをコピーするToolStripMenuItem.Name = "セルをコピーするToolStripMenuItem"
-        Me.セルをコピーするToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.セルをコピーするToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
         Me.セルをコピーするToolStripMenuItem.Text = "セルをコピーする"
         '
         'フルパスをコピーするToolStripMenuItem
         '
         Me.フルパスをコピーするToolStripMenuItem.Name = "フルパスをコピーするToolStripMenuItem"
-        Me.フルパスをコピーするToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.フルパスをコピーするToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
         Me.フルパスをコピーするToolStripMenuItem.Text = "フルパスをコピーする"
         '
         'エクスプローラーで開くToolStripMenuItem
         '
         Me.エクスプローラーで開くToolStripMenuItem.Name = "エクスプローラーで開くToolStripMenuItem"
-        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
         Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
         '
         '列を非表示にするToolStripMenuItem
         '
         Me.列を非表示にするToolStripMenuItem.Name = "列を非表示にするToolStripMenuItem"
-        Me.列を非表示にするToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.列を非表示にするToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
         Me.列を非表示にするToolStripMenuItem.Text = "列を非表示にする"
         '
         '列を再表示するToolStripMenuItem
         '
         Me.列を再表示するToolStripMenuItem.Name = "列を再表示するToolStripMenuItem"
-        Me.列を再表示するToolStripMenuItem.Size = New System.Drawing.Size(270, 36)
+        Me.列を再表示するToolStripMenuItem.Size = New System.Drawing.Size(259, 36)
         Me.列を再表示するToolStripMenuItem.Text = "列を再表示する"
+        '
+        '現在のタブを保存ToolStripMenuItem
+        '
+        Me.現在のタブを保存ToolStripMenuItem.Name = "現在のタブを保存ToolStripMenuItem"
+        Me.現在のタブを保存ToolStripMenuItem.Size = New System.Drawing.Size(331, 40)
+        Me.現在のタブを保存ToolStripMenuItem.Text = "現在のタブを保存"
         '
         'GrepTool
         '
@@ -372,7 +371,6 @@ Partial Class GrepTool
     Friend WithEvents TabControl As TabControl
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ファイルToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Save_ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DeleteTab_ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents セルをコピーするToolStripMenuItem As ToolStripMenuItem
@@ -386,4 +384,5 @@ Partial Class GrepTool
     Friend WithEvents フォントToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 列を非表示にするToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 列を再表示するToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 現在のタブを保存ToolStripMenuItem As ToolStripMenuItem
 End Class

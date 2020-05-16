@@ -1,4 +1,7 @@
 ﻿Imports System.IO
+Imports System.Runtime.InteropServices
+Imports System.Text.RegularExpressions
+Imports Microsoft.Office.Interop
 
 Public Class GrepTool
 
@@ -12,12 +15,11 @@ Public Class GrepTool
     End Sub
 
     Private Sub Init()
-        Save_ToolStripMenuItem.Visible = False
-        DeleteTab_ToolStripMenuItem.Visible = False
+        ToolStripMenuItemVisible(False)
         Call ReadConfig()
     End Sub
 
-    Private Sub Save_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Save_ToolStripMenuItem.Click
+    Private Sub 現在のタブを保存ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 現在のタブを保存ToolStripMenuItem.Click
         Dim sfd As New SaveFileDialog With {
             .FileName = "GrepResult.xlsx",
             .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
@@ -40,7 +42,7 @@ Public Class GrepTool
                 Dim records = ExtractionDataGridView(dgv)
                 OutputCsvFile(sfd.FileName, records, info)
             Else
-                OutputExcelFile(sfd.FileName, dgv, info)
+                GrepToolModule.OutputExcelFile(sfd.FileName, dgv, info)
             End If
         End If
     End Sub
@@ -59,13 +61,75 @@ Public Class GrepTool
 
         'ダイアログを表示する
         If sfd.ShowDialog() = DialogResult.OK Then
-            'DataGridViewを定義
-            Dim dgv As GrepToolDataGridView
-            dgv = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView)
-
-            Dim info As GrepInfo = New GrepInfo(Keyword_TextBox.Text, Extension_TextBox.Text, Folder_TextBox.Text)
-            OutputExcelFile(sfd.FileName, dgv, info)
+            OutputExcelFile(sfd.FileName)
         End If
+    End Sub
+
+    ''' <summary>
+    ''' 全タブファイル出力
+    ''' </summary>
+    ''' <param name="fileName"></param>
+    Private Sub OutputExcelFile(fileName As String)
+
+        '変数定義
+        Dim app As Excel.Application = Nothing
+        Dim book As Excel.Workbook = Nothing
+        Dim sheet As Excel.Worksheet = Nothing
+
+        Try
+            'ファイル作成
+            For i As Integer = 0 To TabControl.TabPages.Count - 1
+                TabControl.SelectedIndex = i
+                Dim dgv As GrepToolDataGridView = DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView)
+
+                'Book作成
+                If app Is Nothing Then
+                    app = New Excel.Application()
+                    app.Workbooks.Add()
+                    app.DisplayAlerts = False
+                    book = app.Workbooks(1)
+                    For j As Integer = 1 To TabControl.TabPages.Count - 1
+                        app.Sheets.Add()
+                    Next j
+                    sheet = app.Sheets(TabControl.TabPages.Count)
+                End If
+                sheet = CType(book.Worksheets((i + 1)), Excel.Worksheet)
+
+                'シート名設定
+                If Regex.IsMatch(TabControl.SelectedTab.Text, "履歴") Or Regex.IsMatch(TabControl.SelectedTab.Text, "(\*|\\|\/|\:|\[|\]|\?)") Then
+                    sheet.Name = "GrepResult_sheet" & (i + 1)
+                Else
+                    sheet.Name = TabControl.SelectedTab.Text
+                End If
+
+
+                'ヘッダ部を作成
+                For col As Integer = 0 To dgv.ColumnCount - 1
+                    sheet.Cells(1, col + 1) = dgv.Columns(col).HeaderCell.Value
+                Next
+
+                'データ部を作成
+                For row As Integer = 0 To dgv.RowCount - 1
+                    For column As Integer = 0 To dgv.ColumnCount - 1
+                        sheet.Cells(row + 2, column + 1) = dgv.Rows(row).Cells(column).Value.ToString
+                    Next
+                Next
+
+                '保存する
+                book.SaveAs(fileName)
+            Next i
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            'オブジェクト解放
+            app.Quit()
+            Marshal.ReleaseComObject(sheet)
+            Marshal.ReleaseComObject(book)
+            Marshal.ReleaseComObject(app)
+        End Try
+
+        MsgBox("ファイル出力が終了しました。")
     End Sub
 
     Private Sub DeleteTab_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteTab_ToolStripMenuItem.Click
@@ -75,8 +139,7 @@ Public Class GrepTool
         End If
 
         If TabControl.Controls.Count = 0 Then
-            Save_ToolStripMenuItem.Visible = False
-            DeleteTab_ToolStripMenuItem.Visible = False
+            Call ToolStripMenuItemVisible(False)
         End If
     End Sub
 
@@ -129,8 +192,7 @@ Public Class GrepTool
         _Searching = True
         Call AddTextBoxItems()
         Call CreateTabPage()
-        Save_ToolStripMenuItem.Visible = True
-        DeleteTab_ToolStripMenuItem.Visible = True
+        Call ToolStripMenuItemVisible(True)
         _Searching = False
         Me.ResumeLayout()
         Cursor.Current = Cursors.Default
@@ -288,4 +350,15 @@ Public Class GrepTool
             DirectCast(TabControl.SelectedTab.Controls.Find(_DATA_GRID_VIEW_NAME, True)(0), GrepToolDataGridView).Columns(i).Visible = True
         Next i
     End Sub
+
+    ''' <summary>
+    ''' 一括でメニューバーの活性状態を変更する
+    ''' </summary>
+    ''' <param name="value"></param>
+    Private Sub ToolStripMenuItemVisible(value As Boolean)
+        現在のタブを保存ToolStripMenuItem.Visible = value
+        DeleteTab_ToolStripMenuItem.Visible = value
+        全タブを保存ToolStripMenuItem.Visible = value
+    End Sub
+
 End Class
