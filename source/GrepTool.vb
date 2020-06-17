@@ -158,6 +158,11 @@ Public Class GrepTool
         End If
     End Sub
 
+    ''' <summary>
+    ''' 検索ボタン
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Search_Button_Click(sender As Object, e As EventArgs) Handles Search_Button.Click
         Call GrepAction()
     End Sub
@@ -226,6 +231,8 @@ Public Class GrepTool
             Else
                 My.Settings.Keyword = keyword
             End If
+        ElseIf Not keyword.Equals(Keyword_TextBox.Items(Keyword_TextBox.Items.Count - 1)) Then
+            My.Settings.Keyword = My.Settings.Keyword & vbTab & keyword
         End If
 
         If Not Extension_TextBox.Items.Contains(Extension_TextBox.Text) Then
@@ -235,6 +242,8 @@ Public Class GrepTool
             Else
                 My.Settings.Extension = extension
             End If
+        ElseIf Not extension.Equals(Extension_TextBox.Items(Extension_TextBox.Items.Count - 1)) Then
+            My.Settings.Extension = My.Settings.Extension & vbTab & extension
         End If
 
         If Not Folder_TextBox.Items.Contains(Folder_TextBox.Text) Then
@@ -244,6 +253,8 @@ Public Class GrepTool
             Else
                 My.Settings.Folder = folder
             End If
+        ElseIf Not folder.Equals(Folder_TextBox.Items(Folder_TextBox.Items.Count - 1)) Then
+            My.Settings.Folder = My.Settings.Folder & vbTab & folder
         End If
 
         My.Settings.RegularExpression = Grep_CheckBox.Checked
@@ -287,7 +298,13 @@ Public Class GrepTool
         TabControl.SelectedTab = newTab
     End Sub
 
+    ''' <summary>
+    ''' ショートカットキー定義
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Keyword_TextBox.KeyPress, Extension_TextBox.KeyPress, Folder_TextBox.KeyPress
+        '検索処理
         If e.KeyChar = Chr(13) Then
             Call GrepAction()
         End If
