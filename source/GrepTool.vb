@@ -11,10 +11,6 @@ Public Class GrepTool
     Private _Searching As Boolean = False
 
     Private Sub GrepTool_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call Init()
-    End Sub
-
-    Private Sub Init()
         ToolStripMenuItemVisible(False)
         Call ReadConfig()
     End Sub
@@ -227,6 +223,8 @@ Public Class GrepTool
             Keyword_TextBox.Items.Insert(0, Keyword_TextBox.Text)
             If Not My.Settings.Keyword.Equals(String.Empty) Then
                 My.Settings.Keyword = My.Settings.Keyword & vbTab & keyword
+            Else
+                My.Settings.Keyword = keyword
             End If
         End If
 
@@ -234,6 +232,8 @@ Public Class GrepTool
             Extension_TextBox.Items.Insert(0, Extension_TextBox.Text)
             If Not My.Settings.Extension.Equals(String.Empty) Then
                 My.Settings.Extension = My.Settings.Extension & vbTab & extension
+            Else
+                My.Settings.Extension = extension
             End If
         End If
 
@@ -241,6 +241,8 @@ Public Class GrepTool
             Folder_TextBox.Items.Insert(0, Folder_TextBox.Text)
             If Not My.Settings.Folder.Equals(String.Empty) Then
                 My.Settings.Folder = My.Settings.Folder & vbTab & folder
+            Else
+                My.Settings.Folder = folder
             End If
         End If
 
